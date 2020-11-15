@@ -1,0 +1,57 @@
+﻿@model tpEstudiante.Estudiante
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Estudiante</h1>
+
+<h3 style="color:red">¿Estas seguro?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Año)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Año)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Calle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Calle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Localidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Localidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Carrera)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Carrera.Descripcion)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <div style="margin-top:20px">
+            <a asp-action="Index" class="btn btn-info">Volver</a>
+        </div>
+    </form>
+</div>

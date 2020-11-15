@@ -1,0 +1,52 @@
+﻿@model IEnumerable<tpEstudiante.EstudianteMateria>
+
+@{
+    ViewData["Title"] = "Listado";
+}
+
+<h1>Listado de Relaciones</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Foto
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInscripcion)
+            </th>
+            <th> <a asp-action="Create" class="btn btn-success pull-right">Crear Nueva</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <img src="~/image/estudiantes/@item.Estudiante.Foto"
+                     class="rounded-circle"
+                     height="80" with="40"
+                     asp-append-version="true" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estudiante.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materia.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInscripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", "EstudianteMaterias", new { idEstudiante = item.EstudianteId, idMateria = item.MateriaId }) 
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

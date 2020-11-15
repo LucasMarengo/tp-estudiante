@@ -1,0 +1,62 @@
+﻿@model tpEstudiante.Estudiante
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles del Estudiante</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <img src="~/image/estudiantes/@Model.Foto"
+                 height="100" with="100"
+                 asp-append-version="true" />
+        </dt>
+        <dd class="col-sm-10">
+
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Año)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Año)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Calle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Calle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Localidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Localidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Carrera)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Carrera.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id"  class="btn btn-primary">Editar</a> 
+    <div style="margin-top:20px">
+        <a asp-action="Index" class="btn btn-info">Volver</a>
+    </div>
+</div>

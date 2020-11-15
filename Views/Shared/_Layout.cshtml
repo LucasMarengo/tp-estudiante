@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - tpEstudiante</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">tpEstudiante</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Carreras">Carreras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Materias">Materias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Estudiantes">Estudiantes</a>
+                        </li>
+
+                    </ul>
+                   <div class="pull-right"><partial name="_LoginPartial" /></div>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - tpEstudiante - <a asp-area="" asp-controller="Home" asp-action="Privacy">Propiedad Privada</a>
+        </div>
+    </footer>
+
+
+    <environment names="Development">
+        <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Mostrar variables recibidas
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <hr />
+            <h2>Valores recibidos en el Request:</h2>
+
+            <strong>
+                Request: @Context.Request.Method - @Context.Request.Path
+            </strong>
+            <br />
+            <h2>Form</h2>
+            <p>
+                HasFormContentType: @Context.Request.HasFormContentType<br />
+                @if (@Context.Request.HasFormContentType)
+                {
+                    @foreach (var item in Context.Request.Form)
+                    {
+                        @($"   {item.Key}: {item.Value}")<br />
+                    }
+                }
+            </p>
+
+            <h2>Query Strings</h2>
+            <p>
+                QueryString: @Context.Request.QueryString<br />
+            </p>
+            @foreach (var item in Context.Request.Query)
+            {
+                @($"   {item.Key}: {item.Value}")<br />
+            }
+
+            <h2>Route</h2>
+            @foreach (var item in Context.Request.RouteValues)
+            {
+                @($"   {item.Key}: {item.Value}")<br />
+            }
+
+            <h2>Headers</h2>
+            @foreach (var item in Context.Request.Headers)
+            {
+                @($"   {item.Key}: {item.Value}")<br />
+            }
+
+        </div>
+
+    </environment>
+
+
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

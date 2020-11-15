@@ -1,0 +1,42 @@
+﻿@model tpEstudiante.ViewModel.Paginador
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.PaginaActual==1 ? "disabled": "")">
+            <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual - 1)" tabindex="-1" aria-disabled="true">Anterior</a>
+        </li>
+
+        @if (Model.PaginaActual > 2)
+        {
+            <li class="page-item"><a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="1">1</a></li>
+        }
+
+
+        @if (Model.PaginaActual > 1)
+        {
+            <li class="page-item"><a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual - 1)">@(Model.PaginaActual - 1)</a></li>
+        }
+
+        <li class="page-item active" aria-current="page">
+            <a class="page-link">@Model.PaginaActual <span class="sr-only">(current)</span></a>
+        </li>
+
+        @if (Model.PaginaActual < Model.TotalPaginas)
+        {
+            <li class="page-item"><a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual + 1)">@(Model.PaginaActual + 1)</a></li>
+        }
+
+        @if (Model.PaginaActual < Model.TotalPaginas - 1)
+        {
+            <li class="page-item"><a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.TotalPaginas)">@(Model.TotalPaginas)</a></li>
+        }
+
+        <li class="page-item @(Model.PaginaActual==Model.TotalPaginas ? "disabled": "")">
+            <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual + 1)">Siguiente</a>
+        </li>
+    </ul>
+</nav>
+TotalPaginas: @Model.TotalPaginas
+<br />
+TotalRegistros: @Model.TotalRegistros
+<br />
